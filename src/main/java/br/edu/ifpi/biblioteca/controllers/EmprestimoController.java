@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.edu.ifpi.biblioteca.dto.EmprestimoDto;
+import br.edu.ifpi.biblioteca.Dto.EmprestimoDto;
 import br.edu.ifpi.biblioteca.entity.Emprestimo;
 import br.edu.ifpi.biblioteca.repository.EmprestimoRepository;
 import jakarta.validation.Valid;

@@ -1,7 +1,7 @@
 package br.edu.ifpi.biblioteca.entity;
 
-import br.edu.ifpi.biblioteca.dto.UsuarioDto;
-import jakarta.persistence.Column;
+import br.edu.ifpi.biblioteca.Dto.UsuarioDto;
+// import jakarta.persistence.Column;
 /*Elas importam as anotações do JPA, para criar entidade que será 
 mapeada para um banco de dados*/
 import jakarta.persistence.Entity;
@@ -19,21 +19,29 @@ public class Usuario {
     private Long id;
     private String nome;
 
-    @Column (nullable = false, unique = true)//o cpf deve ser unico
+    // @Column (nullable = false, unique = true)//o cpf deve ser unico
     
-    private String cpf;
+    // private String cpf;
     private String email;
     private String preferenciaNotificacao;
 
     public Usuario() {}
-
-    public Usuario(Long id, String nome, String cpf, String email, String preferenciaNotificacao) {
+    public Usuario(Long id, String nome, String email, String preferenciaNotificacao) {
         this.id = id;
         this.nome = nome;
-        this.cpf = cpf;
         this.email = email;
         this.preferenciaNotificacao = preferenciaNotificacao;
     }
+
+
+    
+    // public Usuario(Long id, String nome, String cpf, String email, String preferenciaNotificacao) {
+    //     this.id = id;
+    //     this.nome = nome;
+    //     this.cpf = cpf;
+    //     this.email = email;
+    //     this.preferenciaNotificacao = preferenciaNotificacao;
+    // }
 
     public Usuario (UsuarioDto usuarioDto){
         this.nome=usuarioDto.nome();
@@ -57,13 +65,13 @@ public class Usuario {
         this.nome = nome;
     }
 
-    public String getCpf() {
-        return cpf;
-    }
+    // public String getCpf() {
+    //     return cpf;
+    // }
 
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
+    // public void setCpf(String cpf) {
+    //     this.cpf = cpf;
+    // }
 
     public String getEmail() {
         return email;

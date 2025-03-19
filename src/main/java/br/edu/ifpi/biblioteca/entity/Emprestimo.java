@@ -18,7 +18,7 @@ public class Emprestimo {
     @GeneratedValue(strategy = GenerationType.IDENTITY) // O id será gerado automaticamente pelo banco de dados
     private Long id; 
     
-    @ManyToOne
+    @ManyToOne 
     @JoinColumn (name = "livro_id", nullable = false)
     private Livro livro;
 

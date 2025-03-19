@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.edu.ifpi.biblioteca.dto.LivroDto;
+import br.edu.ifpi.biblioteca.Dto.LivroDto;
 import br.edu.ifpi.biblioteca.entity.Livro;
 import br.edu.ifpi.biblioteca.repository.LivroRepository;
 import jakarta.validation.Valid;
@@ -39,7 +39,7 @@ public class LivroController {
 
     @PutMapping("/{id}")
     public ResponseEntity<String> atualizarLivro(@PathVariable int id, @RequestBody Livro livro) {
-        if (livroRepository.existsById(id)) {
+        if (livroRepository.existsById((long) id)) {
             livro.setId(id);
             livroRepository.save(livro);
             return ResponseEntity.ok().build();
@@ -50,8 +50,8 @@ public class LivroController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deletarLivro(@PathVariable int id) {
-        if (livroRepository.existsById(id)) {
-            livroRepository.deleteById(id);
+        if (livroRepository.existsById((long) id)) {
+            livroRepository.deleteById((long) id);
             return ResponseEntity.ok().build();
         } else {
             return ResponseEntity.notFound().build();
