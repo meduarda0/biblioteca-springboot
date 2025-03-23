@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 @RestController
-@RequestMapping("/livros")
+@RequestMapping("/livro")
 
 public class LivroController {
     @Autowired
@@ -31,9 +31,9 @@ public class LivroController {
     }
 
     @PostMapping
-    public ResponseEntity<String> addLivro(@RequestBody @Valid LivroDto dados) {
-        Livro livro = new Livro();
-        livroRepository.save(livro);
+    public ResponseEntity<Livro> addLivro(@RequestBody @Valid LivroDto dados) {
+        Livro livroCriado = new Livro(dados);
+        livroRepository.save(livroCriado);
         return ResponseEntity.ok().build();
     }
 

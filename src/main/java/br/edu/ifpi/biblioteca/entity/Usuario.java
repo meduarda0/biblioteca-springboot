@@ -21,7 +21,6 @@ public class Usuario {
 
     // @Column (nullable = false, unique = true)//o cpf deve ser unico
     
-    // private String cpf;
     private String email;
     private String preferenciaNotificacao;
 
@@ -33,20 +32,9 @@ public class Usuario {
         this.preferenciaNotificacao = preferenciaNotificacao;
     }
 
-
-    
-    // public Usuario(Long id, String nome, String cpf, String email, String preferenciaNotificacao) {
-    //     this.id = id;
-    //     this.nome = nome;
-    //     this.cpf = cpf;
-    //     this.email = email;
-    //     this.preferenciaNotificacao = preferenciaNotificacao;
-    // }
-
     public Usuario (UsuarioDto usuarioDto){
         this.nome=usuarioDto.nome();
         this.email=usuarioDto.email();
-        //this.cpf =usuarioDto.cpf();
     }
 
     public Long getId() {

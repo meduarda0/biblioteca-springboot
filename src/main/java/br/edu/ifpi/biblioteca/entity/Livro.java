@@ -1,5 +1,6 @@
 package br.edu.ifpi.biblioteca.entity;
 
+import br.edu.ifpi.biblioteca.Dto.LivroDto;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -28,6 +29,14 @@ public class Livro {
         this.editora = editora;
         this.ano = ano;
         this.disponível = disponível;
+    }
+
+    public Livro(LivroDto livroDto){
+        this.titulo = livroDto.titulo();
+        this.autor = livroDto.autor();
+        this.editora = livroDto.editora();
+        this.ano = livroDto.ano();
+        this.disponível = livroDto.disponivel();
     }
 
     public long getId() {

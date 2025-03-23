@@ -36,8 +36,6 @@ public class UsuarioController {
     //@Valid ele é uma notação de valida
     public ResponseEntity<String> addUsuario(@RequestBody @Valid UsuarioDto dados) { //conversão p um objeto dto
         Usuario usuario = new Usuario (dados);
-        //Usuario usuario = new Usuario(usuarioDto.nome(), usuarioDto.email());
-
         usuarioRepository.save(usuario);
         return ResponseEntity.ok().build();
     }
