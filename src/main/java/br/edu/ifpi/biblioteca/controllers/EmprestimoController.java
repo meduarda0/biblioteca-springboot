@@ -7,7 +7,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.edu.ifpi.biblioteca.Dto.EmprestimoDto;
 import br.edu.ifpi.biblioteca.entity.Emprestimo;
+import br.edu.ifpi.biblioteca.entity.Livro;
+import br.edu.ifpi.biblioteca.entity.Usuario;
 import br.edu.ifpi.biblioteca.repository.EmprestimoRepository;
+import br.edu.ifpi.biblioteca.repository.LivroRepository;
+import br.edu.ifpi.biblioteca.repository.UsuarioRepository;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -23,6 +27,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 public class EmprestimoController {
     @Autowired
+    private UsuarioRepository usuarioRepository;
+
+    @Autowired
+    private LivroRepository livroRepository;
+
+    @Autowired
     private EmprestimoRepository emprestimoRepository;
 
     @GetMapping()
@@ -31,10 +41,14 @@ public class EmprestimoController {
     }
 
     @PostMapping
-    public ResponseEntity<String> addEmprestimo(@RequestBody @Valid EmprestimoDto dados) {
-        Emprestimo emprestimo = new Emprestimo();
+    public ResponseEntity<Emprestimo> addEmprestimo(@RequestBody @Valid EmprestimoDto dados) {
+        Usuario usuario = usuarioRepository.findById(dados.usuario_id()).orElseThrow();
+        Livro livro = livroRepository.findById(dados.livro_id()).orElseThrow();
+
+        Emprestimo emprestimo = new Emprestimo(null, usuario, livro, dados.data_emprestimo(), dados.data_devolucao());
         emprestimoRepository.save(emprestimo);
-        return ResponseEntity.ok().build();
+
+        return ResponseEntity.ok(emprestimo);
     }
 
     @PutMapping("/{id}")
