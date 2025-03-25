@@ -52,14 +52,18 @@ public class EmprestimoController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<String> atualizarEmprestimo(@PathVariable Long id, @RequestBody Emprestimo emprestimo) {
-        if (emprestimoRepository.existsById(id)) {
-            emprestimo.setId(id);
+    public ResponseEntity<Emprestimo> atualizarEmprestimo(@PathVariable Long id, @RequestBody Emprestimo emprestimoAtualizado) {
+        return emprestimoRepository.findById(id).map(emprestimo -> {
+            if (emprestimoAtualizado.getDataEmprestimo() != null) {
+                emprestimo.setDataEmprestimo(emprestimoAtualizado.getDataEmprestimo());
+            }
+            if (emprestimoAtualizado.getDataDevolucao() != null) {
+                emprestimo.setDataDevolucao(emprestimoAtualizado.getDataDevolucao());
+            }
+
             emprestimoRepository.save(emprestimo);
-            return ResponseEntity.ok().build();
-        } else {
-            return ResponseEntity.notFound().build();
-        }
+            return ResponseEntity.ok(emprestimo);
+        }).orElse(ResponseEntity.notFound().build());
     }
 
     @DeleteMapping("/{id}")

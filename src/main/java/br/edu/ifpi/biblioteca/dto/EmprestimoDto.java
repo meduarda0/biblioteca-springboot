@@ -8,5 +8,4 @@ public record EmprestimoDto(
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd") LocalDate data_devolucao, 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd") LocalDate data_emprestimo, 
     @NotNull Long livro_id, 
-    @NotNull Long usuario_id
-) {}
+    @NotNull Long usuario_id) {}

@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 @RestController
-//Não precisei fazer o import de dto.usuario.Dto.
 @RequestMapping("/usuarios")  
 public class UsuarioController {
     @Autowired
