@@ -28,7 +28,6 @@ public class UsuarioController {
     public List<Usuario> listaTodosUsuarios() {
         return usuarioRepository.findAll();
     }
-   
     
     @PostMapping //Metodo para adicionar um novo usuário ao banco de dados
     //vamos ultilizar os dados da minha record Dto
@@ -49,6 +48,7 @@ public class UsuarioController {
             return ResponseEntity.notFound().build();
         }
     }
+    
     @DeleteMapping("/{id}") //id p não deletar todos de uma vez, mas um específico
     public ResponseEntity<String> deletarUsuario(@PathVariable Long id) {
         if (usuarioRepository.existsById(id)) {

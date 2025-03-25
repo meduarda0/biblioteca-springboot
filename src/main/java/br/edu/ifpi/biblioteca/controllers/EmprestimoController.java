@@ -6,12 +6,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.edu.ifpi.biblioteca.Dto.EmprestimoDto;
-import br.edu.ifpi.biblioteca.entity.Emprestimo;
-import br.edu.ifpi.biblioteca.entity.Livro;
-import br.edu.ifpi.biblioteca.entity.Usuario;
-import br.edu.ifpi.biblioteca.repository.EmprestimoRepository;
-import br.edu.ifpi.biblioteca.repository.LivroRepository;
-import br.edu.ifpi.biblioteca.repository.UsuarioRepository;
+import br.edu.ifpi.biblioteca.entity.*;
+import br.edu.ifpi.biblioteca.repository.*;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
