@@ -29,7 +29,8 @@ public class LivroController {
     public List<Livro> listaTodosLivros() {
         return livroRepository.findAll();
     }
-
+  
+    
     @PostMapping
     public ResponseEntity<Livro> addLivro(@RequestBody @Valid LivroDto dados) {
         Livro livroCriado = new Livro(dados);
@@ -47,6 +48,8 @@ public class LivroController {
             return ResponseEntity.notFound().build();
         }
     }
+  
+
 
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deletarLivro(@PathVariable int id) {

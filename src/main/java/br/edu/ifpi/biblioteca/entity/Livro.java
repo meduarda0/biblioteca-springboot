@@ -18,17 +18,17 @@ public class Livro {
     private String autor;
     private String editora;
     private int ano;
-    private boolean disponível;
+    private boolean disponivel;
 
     public Livro() {}
 
-    public Livro(long id, String titulo, String autor, String editora, int ano, boolean disponível) {
+    public Livro(long id, String titulo, String autor, String editora, int ano, boolean disponivel) {
         this.id = id;
         this.titulo = titulo;
         this.autor = autor;
         this.editora = editora;
         this.ano = ano;
-        this.disponível = disponível;
+        this.disponivel = disponivel;
     }
 
     public Livro(LivroDto livroDto){
@@ -36,7 +36,7 @@ public class Livro {
         this.autor = livroDto.autor();
         this.editora = livroDto.editora();
         this.ano = livroDto.ano();
-        this.disponível = livroDto.disponivel();
+        this.disponivel = livroDto.disponivel();
     }
 
     public long getId() {
@@ -79,11 +79,11 @@ public class Livro {
         this.ano = ano;
     }
 
-    public boolean isDisponível() {
-        return disponível;
+    public boolean isDisponivel() {
+        return disponivel;
     }
 
-    public void setDisponível(boolean disponível) {
-        this.disponível = disponível;
+    public void setDisponivel(boolean disponivel) {
+        this.disponivel = disponivel;
     }
 }

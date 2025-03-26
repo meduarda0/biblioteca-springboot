@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.edu.ifpi.biblioteca.NotificacaoEmail;
 import br.edu.ifpi.biblioteca.Dto.EmprestimoDto;
 import br.edu.ifpi.biblioteca.entity.*;
 import br.edu.ifpi.biblioteca.repository.*;
@@ -30,7 +31,8 @@ public class EmprestimoController {
 
     @Autowired
     private EmprestimoRepository emprestimoRepository;
-
+  @Autowired
+    private NotificacaoEmail notificacao;
     @GetMapping()
     public List<Emprestimo> listaTodosEmprestimos() {
         return emprestimoRepository.findAll();
@@ -42,6 +44,7 @@ public class EmprestimoController {
         Livro livro = livroRepository.findById(dados.livro_id()).orElseThrow();
 
         Emprestimo emprestimo = new Emprestimo(null, usuario, livro, dados.data_emprestimo(), dados.data_devolucao());
+        notificacao.notificarEmprestimo(usuario.getEmail(), livro.getTitulo());
         emprestimoRepository.save(emprestimo);
 
         return ResponseEntity.ok(emprestimo);
